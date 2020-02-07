@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+
 using namespace std;
 
 void stat(const double[],int,double []);
@@ -17,4 +18,33 @@ int main()
     return 0;
 }
 
-//Write definition of stat() here 
+void stat(const double Input[],int N,double Output[]){
+
+    double sum=0, sumpow=0, SD=0, average, max, min;
+
+    max = Input[0];
+    min = Input[0];
+
+    for(int i=0; i<=N;i++){
+
+        sum += Input[i];
+        sumpow += pow(Input[i],2);
+
+        if(max < Input[i]){
+
+            max = Input[i];
+        }
+        if(min > Input[i]){
+ 
+            min = Input[i];
+        }
+    }
+
+    average = sum / N;
+    SD = sqrt((sumpow / N) - pow(average,2));
+
+    Output[0]=average;
+    Output[1]=SD;
+    Output[2]=max;
+    Output[3]=min;
+ }

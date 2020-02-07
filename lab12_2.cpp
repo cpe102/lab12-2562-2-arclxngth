@@ -2,8 +2,8 @@
 #include <cmath>
 using namespace std;
 
-const int N = 30;
-const int M = 70;
+const int N = 32;
+const int M = 72;
 
 void updateImage(bool [][M],int,int,int);
 
@@ -22,4 +22,31 @@ int main()
              return 0;    
 }
 
-// Write definition of updateImage() and showImage() here
+void updateImage(bool image[][M], int size, int x, int y){
+	
+	for(int i=0; i<N; i++){
+		for(int j=0; j<M; j++){
+			
+			if(sqrt(pow((i-x),2)+(pow((j-y),2)))<=size-1){
+				
+				image[i+1][j+1]=1;
+			}
+		}
+}
+	
+
+}
+
+void showImage(const bool image[][M]){
+	
+    for(int i=0; i<N; i++){
+        for(int j=0; j<M; j++){
+			
+			if(i==0 || i==N-1) cout<<"-";
+            else if(j==0 || j==M-1) cout<<"|";
+            else if (image[i][j]==1) cout<<"*";
+			else cout<<" ";
+        }
+        cout<<endl;
+    }
+}
